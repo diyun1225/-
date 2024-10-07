@@ -1,0 +1,1576 @@
+[
+    {
+        "id": "6be1456e1672e2ec",
+        "type": "tab",
+        "label": "流程1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "443d409d290a92d7",
+        "type": "mqtt in",
+        "z": "6be1456e1672e2ec",
+        "name": "",
+        "topic": "mongoDB/sensors",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "b9532f6f552d2208",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 90,
+        "y": 220,
+        "wires": [
+            [
+                "33be4b7fd52c0040",
+                "4428ab17f26794d4",
+                "daad59a4983f0465",
+                "339b2989249a6d06",
+                "cc521a0922148dac",
+                "8839b5aac8883d4b"
+            ]
+        ]
+    },
+    {
+        "id": "4428ab17f26794d4",
+        "type": "change",
+        "z": "6be1456e1672e2ec",
+        "name": "環境溫度",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.environment_temperature",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 320,
+        "y": 40,
+        "wires": [
+            [
+                "c034ec449988aeb7"
+            ]
+        ]
+    },
+    {
+        "id": "691e8b6dc75b1458",
+        "type": "debug",
+        "z": "6be1456e1672e2ec",
+        "name": "debug 1",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "33be4b7fd52c0040",
+        "type": "change",
+        "z": "6be1456e1672e2ec",
+        "name": "環境溼度",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.environment_humidity",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 320,
+        "y": 180,
+        "wires": [
+            [
+                "9187822276ef8b50"
+            ]
+        ]
+    },
+    {
+        "id": "daad59a4983f0465",
+        "type": "change",
+        "z": "6be1456e1672e2ec",
+        "name": "風速",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.wind_speed",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 280,
+        "wires": [
+            [
+                "23cd95664dd2cb43"
+            ]
+        ]
+    },
+    {
+        "id": "339b2989249a6d06",
+        "type": "change",
+        "z": "6be1456e1672e2ec",
+        "name": "風向",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.wind_direction_angle",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 420,
+        "wires": [
+            [
+                "a8a562e728d76923"
+            ]
+        ]
+    },
+    {
+        "id": "07a719bc25b209c6",
+        "type": "ui_gauge",
+        "z": "6be1456e1672e2ec",
+        "name": "環境濕度",
+        "group": "7d871a6e8f4c9593",
+        "order": 8,
+        "width": 4,
+        "height": 4,
+        "gtype": "wave",
+        "title": "環境溼度",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "split-lower",
+        "x": 740,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "2b6b663d2c9750fe",
+        "type": "ui_chart",
+        "z": "6be1456e1672e2ec",
+        "name": "歷史環境溫度",
+        "group": "7d871a6e8f4c9593",
+        "order": 7,
+        "width": 6,
+        "height": 4,
+        "label": "歷史環境溫度",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "50",
+        "removeOlder": "1",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 760,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9cc8927222b5f366",
+        "type": "debug",
+        "z": "6be1456e1672e2ec",
+        "name": "debug 3",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "3c64452a54fad2d9",
+        "type": "change",
+        "z": "6be1456e1672e2ec",
+        "name": "電流",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.DCcurrent",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 600,
+        "wires": [
+            [
+                "c559eb4082f9401d"
+            ]
+        ]
+    },
+    {
+        "id": "61aedba7656e5ca1",
+        "type": "change",
+        "z": "6be1456e1672e2ec",
+        "name": "電壓",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.DCvoltage",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 540,
+        "wires": [
+            [
+                "abae6033caad4eaa"
+            ]
+        ]
+    },
+    {
+        "id": "fa7c594ba893d1d4",
+        "type": "change",
+        "z": "6be1456e1672e2ec",
+        "name": "內部溫度",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 320,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6aa4cbafce621291",
+        "type": "ui_chart",
+        "z": "6be1456e1672e2ec",
+        "name": "歷史環境濕度",
+        "group": "7d871a6e8f4c9593",
+        "order": 9,
+        "width": 6,
+        "height": 4,
+        "label": "歷史環境濕度",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": "1",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 760,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e1d3fa3da5a319d1",
+        "type": "ui_gauge",
+        "z": "6be1456e1672e2ec",
+        "name": "環境溫度",
+        "group": "7d871a6e8f4c9593",
+        "order": 6,
+        "width": 5,
+        "height": 5,
+        "gtype": "gage",
+        "title": "環境溫度",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": "0",
+        "max": "80",
+        "colors": [
+            "#96d35f",
+            "#e4ef65",
+            "#ff6251"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "split-upper",
+        "x": 740,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "8a4561be9276f4ca",
+        "type": "ui_gauge",
+        "z": "6be1456e1672e2ec",
+        "d": true,
+        "name": "電壓",
+        "group": "7d871a6e8f4c9593",
+        "order": 17,
+        "width": 7,
+        "height": 5,
+        "gtype": "gage",
+        "title": "電壓",
+        "label": "V",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 730,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "acc49c07b0d89fbf",
+        "type": "ui_gauge",
+        "z": "6be1456e1672e2ec",
+        "d": true,
+        "name": "電流",
+        "group": "7d871a6e8f4c9593",
+        "order": 28,
+        "width": 7,
+        "height": 5,
+        "gtype": "gage",
+        "title": "電流",
+        "label": "A",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 730,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "9020817ba284881f",
+        "type": "ui_chart",
+        "z": "6be1456e1672e2ec",
+        "name": "歷史電壓",
+        "group": "22bd146990bf3867",
+        "order": 1,
+        "width": 7,
+        "height": 5,
+        "label": "歷史電壓",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "50",
+        "removeOlder": "1",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 740,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "20356ad0dd986de0",
+        "type": "ui_chart",
+        "z": "6be1456e1672e2ec",
+        "name": "歷史電流",
+        "group": "22bd146990bf3867",
+        "order": 2,
+        "width": 7,
+        "height": 5,
+        "label": "歷史電流",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "50",
+        "removeOlder": "1",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 740,
+        "y": 680,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "dae98371ed59d899",
+        "type": "ui_gauge",
+        "z": "6be1456e1672e2ec",
+        "name": "風向",
+        "group": "7d871a6e8f4c9593",
+        "order": 3,
+        "width": 6,
+        "height": 3,
+        "gtype": "compass",
+        "title": "風向",
+        "label": "",
+        "format": "{{payload}}",
+        "min": 0,
+        "max": "360",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 730,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "83bd0b7302fddc59",
+        "type": "ui_chart",
+        "z": "6be1456e1672e2ec",
+        "name": "歷史風向",
+        "group": "7d871a6e8f4c9593",
+        "order": 4,
+        "width": 15,
+        "height": 4,
+        "label": "歷史風向",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "360",
+        "removeOlder": "1",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 740,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1a4ee0ef2957a6d4",
+        "type": "ui_chart",
+        "z": "6be1456e1672e2ec",
+        "name": "歷史風速",
+        "group": "7d871a6e8f4c9593",
+        "order": 2,
+        "width": 15,
+        "height": 4,
+        "label": "歷史風速",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "50",
+        "removeOlder": "1",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 740,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7fb27c7dd1e98905",
+        "type": "ui_gauge",
+        "z": "6be1456e1672e2ec",
+        "name": "風速",
+        "group": "7d871a6e8f4c9593",
+        "order": 1,
+        "width": 6,
+        "height": 4,
+        "gtype": "gage",
+        "title": "風速",
+        "label": "m/s",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "30",
+        "colors": [
+            "#b1dd8c",
+            "#ebf38f",
+            "#ff6251"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 730,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "c034ec449988aeb7",
+        "type": "function",
+        "z": "6be1456e1672e2ec",
+        "name": "小數點＋過濾錯誤訊息(ok)",
+        "func": "var number = parseFloat(msg.payload);\nvar roundedNumber = number.toFixed(2);\nvar before = null;\n\n// 在函式之外定義 before 變數\nvar before = context.get('before') || null;\n\nif (parseFloat(roundedNumber) !== 255 && parseFloat(roundedNumber) < 80) {\n  msg.payload = roundedNumber;\n  before = roundedNumber;  // 更新 before 的值\n} else {\n  if (before === null) {\n    roundedNumber = 0;\n    msg.payload = roundedNumber;\n  } else {\n    msg.payload = before;\n  }\n}\n\n// 將更新後的 before 變數存儲到上下文中\ncontext.set('before', before);\n\nreturn msg;\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 40,
+        "wires": [
+            [
+                "e1d3fa3da5a319d1",
+                "2b6b663d2c9750fe",
+                "691e8b6dc75b1458"
+            ]
+        ]
+    },
+    {
+        "id": "23cd95664dd2cb43",
+        "type": "function",
+        "z": "6be1456e1672e2ec",
+        "name": "是否為0,取小數點(ok)",
+        "func": "if (msg.payload === 1e-8) {\n    msg.payload = 0;\n    return msg;\n}\nvar value = parseFloat(msg.payload).toFixed(2);\nmsg.payload = value;\n\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 280,
+        "wires": [
+            [
+                "7fb27c7dd1e98905",
+                "1a4ee0ef2957a6d4"
+            ]
+        ]
+    },
+    {
+        "id": "a8a562e728d76923",
+        "type": "function",
+        "z": "6be1456e1672e2ec",
+        "name": "小數點(ok)",
+        "func": "// 你收到的數字\nvar number = parseFloat(msg.payload);\nvar roundedNumber = number.toFixed(2);\n// 取小數點後兩位\nvar roundedNumber = number.toFixed(2);\n\n// 將結果存儲在 msg.payload 中\nmsg.payload = roundedNumber;\n\n// 將處理後的訊息傳遞到下一個節點\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 420,
+        "wires": [
+            [
+                "dae98371ed59d899",
+                "83bd0b7302fddc59",
+                "9cc8927222b5f366"
+            ]
+        ]
+    },
+    {
+        "id": "9187822276ef8b50",
+        "type": "function",
+        "z": "6be1456e1672e2ec",
+        "name": "小數點＋過濾錯誤訊息(ok)",
+        "func": "var number = parseFloat(msg.payload);\nvar roundedNumber = number.toFixed(2);\nvar before=null;\n\n// 在函式之外定義 before 變數\nvar before = context.get('before') || null;\n\nif (parseFloat(roundedNumber) !== 255) {\n  msg.payload = roundedNumber;\n  before = roundedNumber;  // 更新 before 的值\n} else {\n  if (before === null) {\n    roundedNumber = 0;\n    msg.payload = roundedNumber;\n  } else {\n    msg.payload = before;\n  }\n}\n\n// 將更新後的 before 變數存儲到上下文中\ncontext.set('before', before);\n\nreturn msg;\n\n\n\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "null",
+                "module": "before"
+            }
+        ],
+        "x": 550,
+        "y": 180,
+        "wires": [
+            [
+                "07a719bc25b209c6",
+                "6aa4cbafce621291"
+            ]
+        ]
+    },
+    {
+        "id": "6a54a762688147db",
+        "type": "function",
+        "z": "6be1456e1672e2ec",
+        "name": "模擬",
+        "func": "// 生成介於 0 到 100 之間的隨機小數，保留兩位小數\nvar randomNum = (Math.random() * 50).toFixed(5);\nmsg.payload = randomNum;\nreturn msg;\n\n",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 150,
+        "y": 540,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "a9ce0744bad9069e",
+        "type": "inject",
+        "z": "6be1456e1672e2ec",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 90,
+        "y": 340,
+        "wires": [
+            [
+                "6a54a762688147db",
+                "84942a29206da0b0"
+            ]
+        ]
+    },
+    {
+        "id": "84942a29206da0b0",
+        "type": "function",
+        "z": "6be1456e1672e2ec",
+        "name": "function 1",
+        "func": "// 生成介於 0 到 100 之間的隨機小數，保留兩位小數\nvar randomNum = (Math.random() * 50).toFixed(5);\nmsg.payload = randomNum;\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 140,
+        "y": 700,
+        "wires": [
+            [
+                "31b5ce2b108966c6"
+            ]
+        ]
+    },
+    {
+        "id": "cc521a0922148dac",
+        "type": "change",
+        "z": "6be1456e1672e2ec",
+        "name": "風向方位",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.w",
+                "pt": "msg",
+                "to": "payload.wind_position",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 320,
+        "y": 340,
+        "wires": [
+            [
+                "7e8280b4fe7abb77"
+            ]
+        ]
+    },
+    {
+        "id": "7e8280b4fe7abb77",
+        "type": "ui_text",
+        "z": "6be1456e1672e2ec",
+        "group": "7d871a6e8f4c9593",
+        "order": 5,
+        "width": 6,
+        "height": 1,
+        "name": "風向方位",
+        "label": "",
+        "format": "{{payload.wind_direction}}",
+        "layout": "row-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": "",
+        "color": "#000000",
+        "x": 460,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "bd99b19fe6767af2",
+        "type": "file",
+        "z": "6be1456e1672e2ec",
+        "name": "",
+        "filename": "/Users/lijiayun/Desktop/text.csv",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "false",
+        "encoding": "utf8",
+        "x": 1130,
+        "y": 240,
+        "wires": [
+            [
+                "48724d5c756be195"
+            ]
+        ]
+    },
+    {
+        "id": "48724d5c756be195",
+        "type": "debug",
+        "z": "6be1456e1672e2ec",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1340,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "abae6033caad4eaa",
+        "type": "function",
+        "z": "6be1456e1672e2ec",
+        "name": "小數點(ok)",
+        "func": "var value = parseFloat(msg.payload).toFixed(2);\n\nmsg.payload = value;\nif (msg.payload==0.8){\n    msg.payload=0;\n}\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 540,
+        "wires": [
+            [
+                "9020817ba284881f",
+                "ab2d19539ccb6e3e"
+            ]
+        ]
+    },
+    {
+        "id": "c559eb4082f9401d",
+        "type": "function",
+        "z": "6be1456e1672e2ec",
+        "name": "小數點(ok)",
+        "func": "var value = parseFloat(msg.payload).toFixed(2);\nif (msg.payload<0){\n    value=0;\n}\nmsg.payload = value;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 600,
+        "wires": [
+            [
+                "20356ad0dd986de0"
+            ]
+        ]
+    },
+    {
+        "id": "ab2d19539ccb6e3e",
+        "type": "debug",
+        "z": "6be1456e1672e2ec",
+        "name": "debug 7",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "8839b5aac8883d4b",
+        "type": "function",
+        "z": "6be1456e1672e2ec",
+        "name": "整理數據(ok)",
+        "func": "\n// 獲取當前時間的時間戳（毫秒）\nvar timestamp = Date.now();\n\n// 格式化時間戳為可讀日期時間\nvar datetime = new Date(timestamp).toLocaleString();\n\n// 將數據與時間戳結合\nmsg.payload = {\n    datetime: datetime,\n    environment_temperature: Number(msg.payload.environment_temperature.toFixed(2)),\n    environment_humidity: Number(msg.payload.environment_humidity.toFixed(2)),\n    wind_speed: Number(msg.payload.wind_speed.toFixed(2)),\n    wind_direction: Number(msg.payload.wind_direction.toFixed(2)),\n    wind_position: msg.payload.wind_position,\n    DCvoltage: Number(msg.payload.DCvoltage.toFixed(2)),\n    DCcurrent: Number(msg.payload.DCcurrent.toFixed(2)),\n    Ktemperature: Number(msg.payload.Ktemperature.toFixed(2))\n};\nif (msg.payload.DCcurrent < 0) {\n    msg.payload.DCcurrent = 0;\n    msg.payload.DCvoltage = 0;\n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 910,
+        "y": 240,
+        "wires": [
+            [
+                "bd99b19fe6767af2"
+            ]
+        ]
+    },
+    {
+        "id": "3fb510262c57f862",
+        "type": "debug",
+        "z": "6be1456e1672e2ec",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 80,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "cb09f44dccdd08bd",
+        "type": "mqtt in",
+        "z": "6be1456e1672e2ec",
+        "name": "",
+        "topic": "lora/test",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "b9532f6f552d2208",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 100,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "31b5ce2b108966c6",
+        "type": "debug",
+        "z": "6be1456e1672e2ec",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 340,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "2fb637dccc9afdbd",
+        "type": "mqtt in",
+        "z": "6be1456e1672e2ec",
+        "name": "",
+        "topic": "mongoDB/sensor",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "b9532f6f552d2208",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 200,
+        "y": 1180,
+        "wires": [
+            [
+                "848a6afa966e3e89"
+            ]
+        ]
+    },
+    {
+        "id": "848a6afa966e3e89",
+        "type": "change",
+        "z": "6be1456e1672e2ec",
+        "name": "上層溫度",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.w",
+                "pt": "msg",
+                "to": "payload.wind_position",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 420,
+        "y": 1180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "611caed3b81656f9",
+        "type": "function",
+        "z": "6be1456e1672e2ec",
+        "name": "小數點＋過濾錯誤訊息(ok)",
+        "func": "var number = parseFloat(msg.payload);\nvar roundedNumber = number.toFixed(2);\nvar before=null;\n\n// 在函式之外定義 before 變數\nvar before = context.get('before') || null;\n\nif (parseFloat(roundedNumber) !== 255 && parseFloat(roundedNumber) < 100) {\n  msg.payload = roundedNumber;\n  before = roundedNumber;  // 更新 before 的值\n} else {\n  if (before === null) {\n    roundedNumber = 0;\n    msg.payload = roundedNumber;\n  } else {\n    msg.payload = before;\n  }\n}\n\n// 將更新後的 before 變數存儲到上下文中\ncontext.set('before', before);\n\nreturn msg;\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "null",
+                "module": "before"
+            }
+        ],
+        "x": 350,
+        "y": 940,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3eaaaee9761064a7",
+        "type": "function",
+        "z": "6be1456e1672e2ec",
+        "name": "小數點＋過濾錯誤訊息(ok)",
+        "func": "var number = parseFloat(msg.payload);\nvar roundedNumber = number.toFixed(2);\nvar before=null;\n\n// 在函式之外定義 before 變數\nvar before = context.get('before') || null;\n\nif (parseFloat(roundedNumber) !== 255 && parseFloat(roundedNumber) < 100) {\n  msg.payload = roundedNumber;\n  before = roundedNumber;  // 更新 before 的值\n} else {\n  if (before === null) {\n    roundedNumber = 0;\n    msg.payload = roundedNumber;\n  } else {\n    msg.payload = before;\n  }\n}\n\n// 將更新後的 before 變數存儲到上下文中\ncontext.set('before', before);\n\nreturn msg;\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "null",
+                "module": "before"
+            }
+        ],
+        "x": 350,
+        "y": 900,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e1f46f62e0a27aa2",
+        "type": "function",
+        "z": "6be1456e1672e2ec",
+        "name": "小數點＋過濾錯誤訊息(ok)",
+        "func": "var number = parseFloat(msg.payload);\nvar roundedNumber = number.toFixed(2);\nvar before=null;\n\n// 在函式之外定義 before 變數\nvar before = context.get('before') || null;\n\nif (parseFloat(roundedNumber) !== 255 && parseFloat(roundedNumber) < 100) {\n  msg.payload = roundedNumber;\n  before = roundedNumber;  // 更新 before 的值\n} else {\n  if (before === null) {\n    roundedNumber = 0;\n    msg.payload = roundedNumber;\n  } else {\n    msg.payload = before;\n  }\n}\n\n// 將更新後的 before 變數存儲到上下文中\ncontext.set('before', before);\n\nreturn msg;\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "null",
+                "module": "before"
+            }
+        ],
+        "x": 350,
+        "y": 860,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f60314ef32030470",
+        "type": "change",
+        "z": "6be1456e1672e2ec",
+        "name": "上層溫度",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.w",
+                "pt": "msg",
+                "to": "payload.wind_position",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 420,
+        "y": 1260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b11acdeb1f93057e",
+        "type": "change",
+        "z": "6be1456e1672e2ec",
+        "name": "中層溫度",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.w",
+                "pt": "msg",
+                "to": "payload.wind_position",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 420,
+        "y": 1220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "dd5f965e.fb70b8",
+        "type": "ui_template",
+        "z": "6be1456e1672e2ec",
+        "d": true,
+        "group": "81b1bdc3.9a60b8",
+        "name": "CSS-Basics",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "format": "<style>\n\n* {\n    background: none !important;\n}\n\n    root, a, button, p, div {\n        -webkit-user-select: none !important;\n    }\n\n    body {\n        /*background-image: url(\"http://192.168.178.1:1880/ui/2023.jpg\");*/\n        /*background: linear-gradient(120deg, rgba(40, 42, 49, 1.0) 40%, rgba(47, 49, 56, 1.0) 80%) !important;*/\n        /*background-size: cover !important;*/\n        background: transparent !important;\n\n        background: -webkit-linear-gradient(\n            55deg,\n            #009785 0%,\n            #245aa5 100%\n        ) !important;\n        \n        -webkit-touch-callout: none !important;\n        color: #ffffff !important;\n        padding-top:5px !important;\n    }\n    \n    body.nr-dashboard-theme md-toolbar,\n    body.nr-dashboard-theme md-content md-card {\n\n    }\n\n    \n    ui-card-panel {\n        background-color: rgba(250,250,250,0.3) !important;\n        border:none !important;\n        border-radius: 10px !important;\n/*        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.19) !important;\n*/    }\n\n    ui-card-panel>div.nr-dashboard-cardpanel>div>md-card {\n        background: none !important;\n    }\n    ui-card-panel>div.nr-dashboard-cardpanel button {\n        /*background: none !important;*/\n    } \n    md-toolbar {\n        background: none !important;\n    }\n    md-sidenav {\n        background: linear-gradient(120deg, rgba(40, 42, 49, 0.90) 20%, rgba(47, 49, 56, 0.90) 80%) !important;\n    }\n    md-card.nr-dashboard-button * {\n        box-shadow: none !important;\n    }\n    md-card.nr-dashboard-template * {\n        background: none !important;\n    }\n\n</style>\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "global",
+        "className": "",
+        "x": 770,
+        "y": 800,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3656afbd0a40c614",
+        "type": "ui_spacer",
+        "z": "6be1456e1672e2ec",
+        "name": "spacer",
+        "group": "7d871a6e8f4c9593",
+        "order": 10,
+        "width": 16,
+        "height": 1
+    },
+    {
+        "id": "0941c76058f90ff0",
+        "type": "ui_spacer",
+        "z": "6be1456e1672e2ec",
+        "name": "spacer",
+        "group": "7d871a6e8f4c9593",
+        "order": 11,
+        "width": 21,
+        "height": 1
+    },
+    {
+        "id": "cdef0c46ed39c444",
+        "type": "ui_spacer",
+        "z": "6be1456e1672e2ec",
+        "name": "spacer",
+        "group": "7d871a6e8f4c9593",
+        "order": 12,
+        "width": 21,
+        "height": 1
+    },
+    {
+        "id": "ef6ada4234f90270",
+        "type": "ui_spacer",
+        "z": "6be1456e1672e2ec",
+        "name": "spacer",
+        "group": "7d871a6e8f4c9593",
+        "order": 13,
+        "width": 21,
+        "height": 1
+    },
+    {
+        "id": "ed62de1dbe914f81",
+        "type": "ui_spacer",
+        "z": "6be1456e1672e2ec",
+        "name": "spacer",
+        "group": "7d871a6e8f4c9593",
+        "order": 14,
+        "width": 21,
+        "height": 1
+    },
+    {
+        "id": "4f032434226b3051",
+        "type": "ui_spacer",
+        "z": "6be1456e1672e2ec",
+        "name": "spacer",
+        "group": "7d871a6e8f4c9593",
+        "order": 15,
+        "width": 21,
+        "height": 1
+    },
+    {
+        "id": "59ddc813d2072638",
+        "type": "ui_spacer",
+        "z": "6be1456e1672e2ec",
+        "name": "spacer",
+        "group": "7d871a6e8f4c9593",
+        "order": 16,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "abe69637ede2ddc0",
+        "type": "ui_spacer",
+        "z": "6be1456e1672e2ec",
+        "name": "spacer",
+        "group": "7d871a6e8f4c9593",
+        "order": 18,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "014d7a80b93f42be",
+        "type": "ui_spacer",
+        "z": "6be1456e1672e2ec",
+        "name": "spacer",
+        "group": "7d871a6e8f4c9593",
+        "order": 19,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "1b04a810993cfdab",
+        "type": "ui_spacer",
+        "z": "6be1456e1672e2ec",
+        "name": "spacer",
+        "group": "7d871a6e8f4c9593",
+        "order": 21,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "0f64a8594449a68e",
+        "type": "ui_spacer",
+        "z": "6be1456e1672e2ec",
+        "name": "spacer",
+        "group": "7d871a6e8f4c9593",
+        "order": 22,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "38716d43fd2b5e96",
+        "type": "ui_spacer",
+        "z": "6be1456e1672e2ec",
+        "name": "spacer",
+        "group": "7d871a6e8f4c9593",
+        "order": 23,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "614a1da04237f7b9",
+        "type": "ui_spacer",
+        "z": "6be1456e1672e2ec",
+        "name": "spacer",
+        "group": "7d871a6e8f4c9593",
+        "order": 24,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "b42d4df2b344f57b",
+        "type": "ui_spacer",
+        "z": "6be1456e1672e2ec",
+        "name": "spacer",
+        "group": "7d871a6e8f4c9593",
+        "order": 25,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "ce07be2ca226493f",
+        "type": "ui_spacer",
+        "z": "6be1456e1672e2ec",
+        "name": "spacer",
+        "group": "7d871a6e8f4c9593",
+        "order": 26,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "ea7935308ebfca49",
+        "type": "ui_spacer",
+        "z": "6be1456e1672e2ec",
+        "name": "spacer",
+        "group": "7d871a6e8f4c9593",
+        "order": 27,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "6c45bef7a54799d8",
+        "type": "ui_spacer",
+        "z": "6be1456e1672e2ec",
+        "name": "spacer",
+        "group": "7d871a6e8f4c9593",
+        "order": 29,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "5d58b2159a981ce3",
+        "type": "ui_spacer",
+        "z": "6be1456e1672e2ec",
+        "name": "spacer",
+        "group": "7d871a6e8f4c9593",
+        "order": 30,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "8608bad77d91f8c0",
+        "type": "ui_spacer",
+        "z": "6be1456e1672e2ec",
+        "name": "spacer",
+        "group": "7d871a6e8f4c9593",
+        "order": 31,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "86dc95fb33865076",
+        "type": "ui_spacer",
+        "z": "6be1456e1672e2ec",
+        "name": "spacer",
+        "group": "7d871a6e8f4c9593",
+        "order": 32,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "6487e95c1a9bb519",
+        "type": "ui_spacer",
+        "z": "6be1456e1672e2ec",
+        "name": "spacer",
+        "group": "7d871a6e8f4c9593",
+        "order": 33,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "b3c6ad8536e0ea41",
+        "type": "ui_spacer",
+        "z": "6be1456e1672e2ec",
+        "name": "spacer",
+        "group": "7d871a6e8f4c9593",
+        "order": 34,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "0ebe472c4daeac80",
+        "type": "ui_spacer",
+        "z": "6be1456e1672e2ec",
+        "name": "spacer",
+        "group": "7d871a6e8f4c9593",
+        "order": 35,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "0a226edd56cd9105",
+        "type": "ui_spacer",
+        "z": "6be1456e1672e2ec",
+        "name": "spacer",
+        "group": "7d871a6e8f4c9593",
+        "order": 36,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "a88930820bbd50ca",
+        "type": "ui_spacer",
+        "z": "6be1456e1672e2ec",
+        "name": "spacer",
+        "group": "7d871a6e8f4c9593",
+        "order": 37,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "b9532f6f552d2208",
+        "type": "mqtt-broker",
+        "name": "broker.emqx.io",
+        "broker": "broker.emqx.io",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "7d871a6e8f4c9593",
+        "type": "ui_group",
+        "name": "環境溫度",
+        "tab": "114febdd1f6936f0",
+        "order": 2,
+        "disp": false,
+        "width": 21,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "22bd146990bf3867",
+        "type": "ui_group",
+        "name": "電壓",
+        "tab": "a9a517939dc82e9e",
+        "order": 1,
+        "disp": false,
+        "width": 14,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "81b1bdc3.9a60b8",
+        "type": "ui_group",
+        "name": "Hacks",
+        "tab": "2f5baa7e.0221fe",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "114febdd1f6936f0",
+        "type": "ui_tab",
+        "name": "即時狀態",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "a9a517939dc82e9e",
+        "type": "ui_tab",
+        "name": "歷史狀態",
+        "icon": "dashboard",
+        "order": 3,
+        "disabled": false,
+        "hidden": true
+    },
+    {
+        "id": "2f5baa7e.0221fe",
+        "type": "ui_tab",
+        "name": "Settings",
+        "icon": "timeline",
+        "order": 1,
+        "disabled": true,
+        "hidden": false
+    }
+]
