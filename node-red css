@@ -1,0 +1,125 @@
+[
+    {
+        "id": "1d3d368a4cd4113e",
+        "type": "ui_template",
+        "z": "b34dd628e53acae5",
+        "group": "7d871a6e8f4c9593",
+        "name": "環境狀態css",
+        "order": 20,
+        "width": 7,
+        "height": 1,
+        "format": "<style>\n    #nr-dashboard {\n        /* 整體*/\n        font-weight: bold!important;\n        font-size: 20px;\n        background-color: #FFFFF !important;\n        \n        /* 定義容器的寬度，可以使用百分比或具體數值 */\n       \n        padding: 20px;\n        /* 可選：定義容器的內邊距 */\n        border: 1px solid #ccc;\n        /* 可選：定義容器的邊框 */\n        border-radius: 5px;\n        /* 可選：定義容器的圓角 */\n        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);\n        /* 可選：定義容器的陰影效果 */\n    }\n\n    #toolbar {\n        border-radius: 5px;\n        /* 可選：定義容器的圓角 */\n        background-color: none;\n    }\n\n    #即時狀態_環境溫度 {\n        background: radial-gradient(to right, #FAF9FE, #F1F2F8) !important;\n        left: 10px!important;\n        top: 6px !important;\n        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;\n        /* 陰影 */\n        padding: 20px !important;\n        /* 可選：定義容器的內邊距 */\n        border: 1px solid #ccc;\n        /* 可選：定義容器的邊框 */\n        border-radius: 10px !important;\n        /* 圓角圓度 */\n        display: flex !important;\n    }\n   \n    \n \n    #nr-dashboard-menu-toggle i {\n    color: #00FF00 !important; /* 將 #ff0000 替換為你想要的顏色代碼 */\n    }\n    #current-time{ /* 現在時間美觀 */\n    position: fixed;\n    top: 30px;\n    left: 250px;\n    background-color: none;\n    padding: 10px;\n    z-index: 500;\n    font-weight: bold;\n    }\n</style>\n\n\n\n\n\n\n<div id=\"current-time\"></div>\n<script>\n    //取得現在時間\n  (function(scope) {\n  function displayCurrentTime() {\n    var currentDateTime = new Date();\n\n    // 取得日期部分，包含西元年\n    var date = currentDateTime.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });\n\n    // 取得時間部分\n    var hours = currentDateTime.getHours();\n    var minutes = currentDateTime.getMinutes();\n    var seconds = currentDateTime.getSeconds();\n\n    // 將時間格式化為 00:00:00 的形式\n    var formattedTime = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');\n\n    // 將日期和時間顯示在指定的元素中\n    document.getElementById('current-time').textContent = date + ' ' + formattedTime;\n  }\n\n  // 每秒更新一次時間\n  setInterval(displayCurrentTime, 1000);\n})(scope);\n\n\n",
+        "storeOutMessages": false,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 130,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "eee3ee30806e513a",
+        "type": "ui_template",
+        "z": "b34dd628e53acae5",
+        "group": "6886ea53e74eee0c",
+        "name": "風速風向css",
+        "order": 1,
+        "width": 14,
+        "height": 1,
+        "format": "<style>\n    #nr-dashboard {\n        /* 整體*/\n        font-size: 20px;\n        font-weight: bold !important;\n        background-color: #FFFFF !important;\n        width: 90%;\n        /* 定義容器的寬度，可以使用百分比或具體數值 */\n        margin: 0 auto;\n        /* 水平置中，讓容器位於頁面的中間 */\n        padding: 20px;\n        /* 可選：定義容器的內邊距 */\n        border: 1px solid #ccc;\n        /* 可選：定義容器的邊框 */\n        border-radius: 5px;\n        /* 可選：定義容器的圓角 */\n        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);\n        /* 可選：定義容器的陰影效果 */\n    }\n\n    #toolbar {\n        border-radius: 5px;\n        /* 可選：定義容器的圓角 */\n        background-color: none;\n    }\n\n    #風速風向_風速 {\n        background: radial-gradient(to right, #FAF9FE, #F1F2F8) !important;\n        left: 200px !important;\n        top: 6px !important;\n        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;\n        /* 陰影 */\n        padding: 20px !important;\n        /* 可選：定義容器的內邊距 */\n        border: 1px solid #ccc;\n        /* 可選：定義容器的邊框 */\n        border-radius: 10px !important;\n        /* 圓角圓度 */\n        display: flex !important;\n    }\n\n    #風速風向_風向 {\n        background: radial-gradient(to right, #FAF9FE, #F1F2F8) !important;\n        left: 650px !important;\n        top: 6px !important;\n        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;\n        /* 陰影 */\n        padding: 20px !important;\n        /* 可選：定義容器的內邊距 */\n        border: 1px solid #ccc !important;\n        /* 可選：定義容器的邊框 */\n        border-radius: 10px !important;\n        /* 圓角圓度 */\n        display: flex !important;\n    }\n\n\n    #nr-dashboard-menu-toggle i {\n        color: #00FF00 !important;\n        /* 將 #ff0000 替換為你想要的顏色代碼 */\n    }\n\n    #current-time {\n        /* 現在時間美觀 */\n        position: fixed;\n        top: 30px;\n        left: 250px;\n        background-color: none;\n        padding: 10px;\n        z-index: 9999;\n        font-weight: bold;\n    }\n</style>\n\n\n\n\n\n\n<div id=\"current-time\"></div>\n<script>\n    //取得現在時間\n  (function(scope) {\n  function displayCurrentTime() {\n    var currentDateTime = new Date();\n\n    // 取得日期部分，包含西元年\n    var date = currentDateTime.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });\n\n    // 取得時間部分\n    var hours = currentDateTime.getHours();\n    var minutes = currentDateTime.getMinutes();\n    var seconds = currentDateTime.getSeconds();\n\n    // 將時間格式化為 00:00:00 的形式\n    var formattedTime = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');\n\n    // 將日期和時間顯示在指定的元素中\n    document.getElementById('current-time').textContent = date + ' ' + formattedTime;\n  }\n\n  // 每秒更新一次時間\n  setInterval(displayCurrentTime, 1000);\n})(scope);",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 130,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "22f7380a8ae97837",
+        "type": "ui_template",
+        "z": "b34dd628e53acae5",
+        "group": "22bd146990bf3867",
+        "name": "電壓電流css",
+        "order": 3,
+        "width": 14,
+        "height": 1,
+        "format": "<style>\n    #nr-dashboard {\n        /* 整體*/\n        font-size: 20px;\n        font-weight: bold !important;\n        background-color: #FFFFF !important;\n        width: 90%;\n        /* 定義容器的寬度，可以使用百分比或具體數值 */\n        margin: 0 auto;\n        /* 水平置中，讓容器位於頁面的中間 */\n        padding: 20px;\n        /* 可選：定義容器的內邊距 */\n        border: 1px solid #ccc;\n        /* 可選：定義容器的邊框 */\n        border-radius: 5px;\n        /* 可選：定義容器的圓角 */\n        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);\n        /* 可選：定義容器的陰影效果 */\n    }\n\n    #toolbar {\n        border-radius: 5px;\n        /* 可選：定義容器的圓角 */\n        background-color: none;\n    }\n\n    #電壓電流_電壓 {\n        background: radial-gradient(to right, #FAF9FE, #F1F2F8) !important;\n        left: 200px !important;\n        top: 6px !important;\n        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;\n        /* 陰影 */\n        padding: 20px !important;\n        /* 可選：定義容器的內邊距 */\n        border: 1px solid #ccc;\n        /* 可選：定義容器的邊框 */\n        border-radius: 10px !important;\n        /* 圓角圓度 */\n        display: flex !important;\n    }\n\n    #電壓電流_電流 {\n        background: radial-gradient(to right, #FAF9FE, #F1F2F8) !important;\n        left: 650px !important;\n        top: 6px !important;\n        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;\n        /* 陰影 */\n        padding: 20px !important;\n        /* 可選：定義容器的內邊距 */\n        border: 1px solid #ccc !important;\n        /* 可選：定義容器的邊框 */\n        border-radius: 10px !important;\n        /* 圓角圓度 */\n        display: flex !important;\n    }\n\n\n    #nr-dashboard-menu-toggle i {\n        color: #00FF00 !important;\n        /* 將 #ff0000 替換為你想要的顏色代碼 */\n    }\n\n    #current-time {\n        /* 現在時間美觀 */\n        position: fixed;\n        top: 30px;\n        left: 250px;\n        background-color: none;\n        padding: 10px;\n        z-index: 9999;\n        font-weight: bold;\n    }\n</style>\n\n\n\n\n\n\n<div id=\"current-time\"></div>\n<script>\n    //取得現在時間\n  (function(scope) {\n  function displayCurrentTime() {\n    var currentDateTime = new Date();\n\n    // 取得日期部分，包含西元年\n    var date = currentDateTime.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });\n\n    // 取得時間部分\n    var hours = currentDateTime.getHours();\n    var minutes = currentDateTime.getMinutes();\n    var seconds = currentDateTime.getSeconds();\n\n    // 將時間格式化為 00:00:00 的形式\n    var formattedTime = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');\n\n    // 將日期和時間顯示在指定的元素中\n    document.getElementById('current-time').textContent = date + ' ' + formattedTime;\n  }\n\n  // 每秒更新一次時間\n  setInterval(displayCurrentTime, 1000);\n})(scope);",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 130,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7d871a6e8f4c9593",
+        "type": "ui_group",
+        "name": "環境溫度",
+        "tab": "114febdd1f6936f0",
+        "order": 2,
+        "disp": false,
+        "width": 21,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "6886ea53e74eee0c",
+        "type": "ui_group",
+        "name": "風速",
+        "tab": "9d9c65987a2a2227",
+        "order": 1,
+        "disp": false,
+        "width": 7,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "22bd146990bf3867",
+        "type": "ui_group",
+        "name": "電壓",
+        "tab": "a9a517939dc82e9e",
+        "order": 1,
+        "disp": false,
+        "width": 14,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "114febdd1f6936f0",
+        "type": "ui_tab",
+        "name": "即時狀態",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "9d9c65987a2a2227",
+        "type": "ui_tab",
+        "name": "風速風向",
+        "icon": "dashboard",
+        "order": 3,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "a9a517939dc82e9e",
+        "type": "ui_tab",
+        "name": "歷史狀態",
+        "icon": "dashboard",
+        "order": 3,
+        "disabled": false,
+        "hidden": true
+    }
+]
